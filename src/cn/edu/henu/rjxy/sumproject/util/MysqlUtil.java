@@ -1,10 +1,13 @@
 package cn.edu.henu.rjxy.sumproject.util;
 
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import cn.edu.henu.rjxy.sumproject.bean.User;
+
 import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.Driver;
 
 public class MysqlUtil {
 	/*
@@ -35,6 +38,10 @@ public class MysqlUtil {
 	
 	public static Connection getConnection() {
 		return connection;
+		
+	}
+	
+	public static void InsertSql(Object object,PreparedStatement pstmt) {
 		
 	}
 

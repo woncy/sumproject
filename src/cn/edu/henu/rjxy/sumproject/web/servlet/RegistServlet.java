@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.edu.henu.rjxy.sumproject.bean.User;
+import cn.edu.henu.rjxy.sumproject.bean.UserNameRegistedException;
+import cn.edu.henu.rjxy.sumproject.service.UserService;
 
 /**
  * 本类负责处理注册页面提供的数据
@@ -30,6 +32,15 @@ public class RegistServlet extends HttpServlet {
 		user.setUserId(userId);
 		user.setUsername(username);
 		user.setPassword(password);
+		
+		UserService userService = new UserService();
+		try {
+			userService.regist(user);
+			response.sendRedirect("jsp/index.jsp");
+		} catch (UserNameRegistedException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 	}
 
 }

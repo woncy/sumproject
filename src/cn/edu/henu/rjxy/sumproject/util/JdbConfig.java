@@ -8,6 +8,10 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Properties;
 
+import javax.servlet.Servlet;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServlet;
+
 public class JdbConfig {
 	/**
 	 * 本类负责从jdbc_config中获得连接数据库中所需要的参数
@@ -26,7 +30,8 @@ public class JdbConfig {
 		try {
 			Properties properties = new Properties();
 			String fileName = "jdbc_config.properties";
-			String fileUri = (Class.class.getResource("/").toString()+fileName).substring(6);
+			String fileUri = (JdbConfig.class.getResource("/").toString()+fileName).substring(6);
+			
 			FileInputStream fis = new FileInputStream(new File(fileUri));
 			properties.load(fis);
 			driverClass = properties.getProperty(driverClassName);
